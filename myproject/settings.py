@@ -34,10 +34,9 @@ DEBUG = os.getenv("DEBUG")
 
 ALLOWED_HOSTS = ['165.232.170.117', 'localhost', '127.0.0.1', '*']
 
-# CSRF_TRUSTED_ORIGINS = [
-#     'http://165.232.170.117:1337',
-# ]
-
+CSRF_TRUSTED_ORIGINS = [
+    'http://165.232.170.117:1337',
+]
 
 # Application definition
 SITE_ID = 1
@@ -55,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',  # Required for determining domain url for use in emails
     'helpdesk',  # This is us!
     'ticketapp',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'myproject.urls'
@@ -111,7 +112,7 @@ CORS_ALLOW_METHODS = [
     'POST',
     'PUT',
 ]
-
+CORS_ALLOW_ALL_ORIGINS = True
 
 WSGI_APPLICATION = 'myproject.wsgi.application'
 
@@ -174,9 +175,7 @@ STATICFILES_DIRS = (
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-CORS_ORIGIN_ALLOW_ALL = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/helpdesk/login/'
-LOGOUT_REDIRECT_URL = '/helpdesk/login/'
-# LOGIN_REDIRECT_URL = 'dashboard'
+

@@ -22,5 +22,3 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('helpdesk/', include('helpdesk.urls')),
 ]
-
-# path('', include('helpdesk.urls', namespace='helpdesk')),
